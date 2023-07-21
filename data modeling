@@ -45,3 +45,5 @@ model.add(Dense(units=256, activation="relu"))
 model.add(Dense(units=3, activation="softmax"))
 
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
+
+model.summary()
