@@ -1,0 +1,35 @@
+data=[]
+labels=[]
+covid=os.listdir("/content/COVID_IEEE/covid/")
+for a in covid:
+
+    image = cv2.imread("/content/COVID_IEEE/covid/"+a,)
+    image = cv2.resize(image, (224, 224))
+
+
+    data.append(image)
+    labels.append(0)
+
+normal=os.listdir("/content/COVID_IEEE/normal/")
+for a in normal:
+
+    image = cv2.imread("/content/COVID_IEEE/normal/"+a,)
+    image = cv2.resize(image, (224, 224))
+
+
+
+    data.append(image)
+    labels.append(1)
+
+
+virus=os.listdir("/content/COVID_IEEE/virus/")
+for a in virus:
+
+    image = cv2.imread("/content/COVID_IEEE/virus/"+a,)
+    image = cv2.resize(image, (224, 224))
+    
+
+    data.append(image)
+    labels.append(2)
+data = np.array(data) / 255.0
+img_labels = np.array(labels)
