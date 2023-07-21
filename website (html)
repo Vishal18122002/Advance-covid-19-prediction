@@ -1,0 +1,42 @@
+from IPython.display import HTML
+html_code ='''
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID-19 Detection</title>
+    <link rel="stylesheet" type="text/css" href="/content/drive/MyDrive/prema/prema.css">
+</head>
+<body>
+    <h1>COVID-19 Detection</h1>
+    <div class="image-container">
+
+    <img src="/content/drive/MyDrive/prema/corona-g92d4dcb35_640.jpg" alt="Graphics">
+    </div>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*">
+    <button type="submit">Predict</button>
+    <div id="confirmation-message"></div>
+
+    <script>
+        // JavaScript code to handle button click event and display the confirmation message
+        var confirmationButton = document.getElementById("confirmation-button");
+        var confirmationMessage = document.getElementById("confirmation-message");
+
+        confirmationButton.addEventListener("click", function() {
+            confirmationMessage.textContent = "COVID-19 is confirmed";
+        });
+    </script>
+    </form>
+    <div id="result"></div>
+
+</body>
+</html>
+
+
+
+'''
+
+HTML(html_code)
