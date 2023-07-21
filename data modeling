@@ -47,3 +47,6 @@ model.add(Dense(units=3, activation="softmax"))
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
 
 model.summary()
+
+model.fit(X_train, y_train, validation_split=0.3, epochs=15, batch_size=32)
+
