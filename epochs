@@ -1,0 +1,17 @@
+model = Flatten()(base_model.output)
+
+model = Dense(units=1024, activation="relu")(model)
+model = Dense(units=512, activation="relu")(model)
+model = Dense(units=256, activation="relu")(model)
+
+prediction_layer = Dense(units=3, activation="softmax")(model)
+
+
+model = Model(inputs = base_model.input, outputs = prediction_layer)
+model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
+
+
+model.summary()
+#epochs train
+
+model.fit(X_train, y_train, validation_split=0.3, epochs=15, batch_size=32)
