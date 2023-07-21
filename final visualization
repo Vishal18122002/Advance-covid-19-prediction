@@ -1,0 +1,29 @@
+saving the model history
+loss = pd.DataFrame(model.history.history)
+
+#plotting the loss and accuracy 
+plt.figure(figsize=(10,10))
+
+plt.subplot(2,2,1)
+plt.plot(loss["loss"], label ="Loss")
+plt.plot(loss["val_loss"], label = "Validation_loss")
+plt.legend()
+plt.title("Training and Validation Loss")
+
+plt.subplot(2,2,2)
+plt.plot(loss['accuracy'],label = "Training Accuracy")
+plt.plot(loss['val_accuracy'], label ="Validation_ Accuracy ")
+plt.legend()
+plt.title("Training-Validation Accuracy")
+
+
+predictions = model.predict(X_test)
+
+y_pred = np.argmax(predictions, axis = 1)
+y_test_new = np.argmax(y_test, axis = 1)
+
+print(classification_report(y_test_new, y_pred))
+
+pd.DataFrame(confusion_matrix(y_test_new, y_pred), columns= ["covid", "normal", "virus"], index = ["covid", "normal", "virus"])
+
+model.save('covid_model.h5')
