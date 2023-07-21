@@ -1,0 +1,47 @@
+X_train, X_test, y_train, y_test = train_test_split(data, img_labels, test_size=0.20, random_state=42)
+y_train = tf.keras.utils.to_categorical(y_train, num_classes=3)
+y_test = tf.keras.utils.to_categorical(y_test, num_classes=3)
+
+model = Sequential()
+
+#Block Number 1
+model.add(Conv2D(input_shape = (224,224,3), filters=32,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+model.add(Conv2D(filters=32,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+model.add(MaxPool2D((2,2)))
+
+#Block Number 2
+model.add(Conv2D(filters=64,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+
+model.add(Conv2D(filters=64,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+model.add(MaxPool2D((2,2)))
+
+#Block Number 3
+model.add(Conv2D(filters=128,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+model.add(Conv2D(filters=128,padding="same", kernel_size= (3,3)))
+model.add(Activation("relu"))
+
+model.add(MaxPool2D((2,2)))
+
+model.add(MaxPool2D((2,2)))
+
+# Fully Connected layer
+model.add(Flatten())
+
+model.add(Dense(units=1024, activation="relu"))
+
+model.add(Dense(units=256, activation="relu"))
+
+
+model.add(Dense(units=3, activation="softmax"))
+
+model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
