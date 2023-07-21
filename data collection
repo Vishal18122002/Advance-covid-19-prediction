@@ -1,0 +1,24 @@
+# Using your file location and image samples....
+for dirpath,dirnames,filenames in os.walk("/content/COVID_IEEE"):
+    print(f"there are {len(dirnames)} directories and {len(filenames)} images in '{dirpath}'.")
+
+data_dir = pathlib.Path("/content/COVID_IEEE")
+class_names = np.array(sorted([item.name for item in data_dir.glob("*")]))
+class_names
+
+def view_image(target_dir, target_class):
+    target_folder = target_dir+target_class
+    random_image = random.sample(os.listdir(target_folder),1)
+    print(random_image)
+    img = mpimg.imread(target_folder+"/"+ random_image[0])
+    plt.imshow(img, cmap ="gray")
+    plt.title(target_class)
+    plt.axis("off")
+    print(f"image shape {img.shape}")
+    
+    return img
+
+img = view_image("/content/COVID_IEEE/","virus")
+img = view_image("/content/COVID_IEEE/","normal")
+img = view_image("/content/COVID_IEEE/","covid")
+
