@@ -1,0 +1,11 @@
+files.upload()#download a json from kaggle and upload it.
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+import os
+os.environ["KAGGLE_CONFIG_DIR"] = "/content"
+
+!kaggle datasets download -d sid321axn/covid-cxr-image-dataset-research
+
+!unzip \*.zip
