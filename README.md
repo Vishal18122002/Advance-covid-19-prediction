@@ -33,6 +33,9 @@ This project aims to provide advanced predictive models for COVID-19 spread usin
 
 Contributions are welcome! If you have any suggestions, feature requests, or bug reports, please open an issue or submit a pull request.
 
+## Prototype Sample:
+https://drive.google.com/file/d/1QC0GMMf30m1WBSi8qLkUnB3kL4QwEwuw/view?usp=sharing
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
